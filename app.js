@@ -16,6 +16,11 @@ app.use(
   })
 );
 
+//ROUTES IMPORT START
+const routes = require('./routes/index');
+app.use('/api/v1', routes);
+//ROUTES IMPORT ENDS
+
 const PORT = process.env.PORT ?? 3001;
 app.listen(PORT, (err) => {
   if (err) {
