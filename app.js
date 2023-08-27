@@ -1,8 +1,12 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const connectDB = require('./config/db.config');
 const errorMiddleware = require('./src/middleware/error.middleware');
 const CustomError = require('./custom.error');
+
+//Connect to DB
+connectDB();
 
 const app = express();
 app.use(express.json());
