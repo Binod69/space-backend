@@ -1,7 +1,22 @@
+require('dotenv').config();
 const express = require('express');
-const app = express();
+const cors = require('cors');
 
-const PORT = 3001;
+const app = express();
+app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL,
+  })
+);
+
+const PORT = process.env.PORT ?? 3001;
 app.listen(PORT, (err) => {
   if (err) {
     console.log(`Error connecting to the server: ${err}`);
